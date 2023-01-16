@@ -26,7 +26,7 @@ const TabNavigator = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={({ route }) => ({
-        tabBarActiveTintColor: "black",
+        tabBarActiveTintColor: "#6B9080",
         tabBarInactiveTintColor: "gray",
         tabBarIcon: ({ focused, color, size }) => {
           if (route.name === "Home") {
@@ -34,7 +34,7 @@ const TabNavigator = () => {
               <Icon
                 name="home"
                 type="antdesign"
-                color={focused ? "black" : "gray"}
+                color={focused ? "#6B9080" : "gray"}
               />
             )
           } else if (route.name === "Profile") {
@@ -42,7 +42,7 @@ const TabNavigator = () => {
               <Icon
                 name="person-outline"
                 type="ionicons"
-                color={focused ? "black" : "gray"}
+                color={focused ? "#6B9080" : "gray"}
               />
             )
           }

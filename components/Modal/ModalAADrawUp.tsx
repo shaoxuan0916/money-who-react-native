@@ -7,6 +7,7 @@ import Input from "../Input"
 import Button from "../Button"
 import { doc, updateDoc } from "firebase/firestore"
 import { db } from "../../config/firebase"
+// import toast from "react-hot-toast"
 
 interface IModalAddAADrawUpProps {
   showModal: boolean
@@ -147,6 +148,7 @@ const ModalAADrawUp: React.FC<IModalAddAADrawUpProps> = ({
               Who pays first
             </Text>
             <DropDownPicker
+              placeholder="Select a member"
               open={open}
               value={addTo}
               items={items}

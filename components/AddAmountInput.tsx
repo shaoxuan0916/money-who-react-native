@@ -1,4 +1,4 @@
-import { View, Text } from "react-native"
+import { View, Text, TextInput } from "react-native"
 import React, { useState } from "react"
 import Input from "./Input"
 import Button from "./Button"
@@ -35,6 +35,7 @@ const AddAmountInput = ({
 
       <View style={tw("w-[15%]")}>
         <Button
+          size="sm"
           onPress={() => {
             handleAddMoney(member?.uid, amount)
             setAmount(0)

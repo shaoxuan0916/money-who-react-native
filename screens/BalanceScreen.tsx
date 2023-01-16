@@ -8,6 +8,7 @@ import { db } from "../config/firebase"
 import { useCollectionData } from "react-firebase-hooks/firestore"
 import { useTailwind } from "tailwind-rn/dist"
 import ModalSettle from "../components/Modal/ModalSettle"
+// import toast from "react-hot-toast"
 
 type OrderScreenRouteProp = RouteProp<RootStackParamList, "Balance">
 
@@ -36,8 +37,6 @@ const BalanceScreen = () => {
 
   // selected member index
   const selectedMemberIndex = Number(selectedMember) - 1
-
-  console.log("------", selectedMember, selectedMemberIndex)
 
   // selected member details
   const selectedMemberDetails = membersList && membersList[selectedMemberIndex]

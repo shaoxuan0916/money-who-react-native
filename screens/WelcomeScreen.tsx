@@ -17,7 +17,7 @@ const WelcomeScreen = () => {
   const navigation = useNavigation<WelcomeScreenNavigationProp>()
 
   return (
-    <SafeAreaView style={tw("bg-green4 h-[100%] pt-28 px-8")}>
+    <View style={tw("bg-green4 h-[100%] pt-28 px-8")}>
       <Image
         style={tw("w-auto h-20 py-16")}
         resizeMode="contain"
@@ -43,7 +43,7 @@ const WelcomeScreen = () => {
           outline={true}
         />
       </View>
-    </SafeAreaView>
+    </View>
   )
 }
 

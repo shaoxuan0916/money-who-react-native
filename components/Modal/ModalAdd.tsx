@@ -14,6 +14,7 @@ import { doc, updateDoc } from "firebase/firestore"
 import { db } from "../../config/firebase"
 import { CurrencyType } from "../../store/authStore"
 import AddAmountInput from "../AddAmountInput"
+// import toast from "react-hot-toast"
 
 interface IModalAddProps {
   path: string
@@ -55,7 +56,7 @@ const ModalAdd: React.FC<IModalAddProps> = ({
         console.log("success", doc)
       })
       .catch((error) => {
-        console.log("errorrrrrr", error)
+        console.log("error", error)
       })
 
     // toast.success(`${currency} ${amount} successfully added`)
@@ -162,7 +163,7 @@ const ModalAdd: React.FC<IModalAddProps> = ({
               Object.keys(membersList).map(
                 (member, index) =>
                   member !== selectedMemberIndex.toString() && (
-                    <View style={tw("my-2")}>
+                    <View style={tw("my-2")} key={index}>
                       <AddAmountInput
                         currency={currency}
                         member={membersList[index]}

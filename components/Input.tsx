@@ -7,6 +7,8 @@ interface IInputProps {
   flex?: boolean
   type?: string
   placeholder?: string
+  disabled?: boolean
+  defaultVal?: any
   setValue: Dispatch<SetStateAction<any>>
   clearInput?: boolean
   fullBorder?: boolean
@@ -18,6 +20,8 @@ const Input: React.FC<IInputProps> = ({
   flex,
   type,
   placeholder,
+  disabled,
+  defaultVal,
   setValue,
   fullBorder,
   clearInput,
@@ -41,15 +45,16 @@ const Input: React.FC<IInputProps> = ({
     <View style={flex ? tw("flex-row items-center w-full") : tw("my-4")}>
       <Text
         style={
-          flex ? tw("w-20 text-lg") : tw("text-xl font-semibold text-textColor")
+          flex ? tw("w-24 text-lg") : tw("text-xl font-semibold text-textColor")
         }
       >
         {label}
       </Text>
 
       <TextInput
+        editable={disabled ? false : true}
         autoComplete="off"
-        value={val}
+        value={defaultVal ? defaultVal : val}
         onChangeText={(text) => {
           setValue(text)
           setVal(text)
@@ -58,12 +63,13 @@ const Input: React.FC<IInputProps> = ({
         style={[
           fullBorder
             ? {
-                borderWidth: 1,
+                borderWidth: 0.5,
                 borderRadius: 4,
                 marginTop: 2,
                 backgroundColor: "#fff",
                 paddingLeft: 8,
                 paddingVertical: 6,
+                borderColor: "#666",
               }
             : { borderBottomColor: "#666", borderBottomWidth: 0.5 },
           flex && { width: "70%" },

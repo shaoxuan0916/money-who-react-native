@@ -27,6 +27,8 @@ import Button from "../components/Button"
 import ModalAADrawUp from "../components/Modal/ModalAADrawUp"
 import ModalClear from "../components/Modal/ModalClear"
 import UserCards from "../components/UserCards"
+import DropDownPicker from "react-native-dropdown-picker"
+// import toast from "react-hot-toast"
 
 export type HomeScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabStackParamList, "Home">,
@@ -48,6 +50,9 @@ const HomeScreen = () => {
   // from react-firebase-hooks
   const [docs, loading, error] = useCollectionData(memberQuery)
 
+  const [open, setOpen] = useState<boolean>(false)
+  const [curChange, setCurChange] = useState<CurrencyType>("RM")
+  const [currencyList, setCurrencyList] = useState<any>(["USD", "RMB", "RM"])
   const [newMember, setNewMember] = useState("")
   const [sessionExpired, setSessionExpired] = useState<boolean>(false)
   const [showAddModalAA, setShowModalAA] = useState(false)
@@ -92,7 +97,7 @@ const HomeScreen = () => {
       // { merge: true }
     )
 
-    //    toast.success("New member added")
+    // toast.success("New member added")
   }
 
   // function update old member(s)'s other members
@@ -129,7 +134,7 @@ const HomeScreen = () => {
       handleDeleteDoc(index)
     })
 
-    //    toast.success("All members cleared")
+    // toast.success("All members cleared")
     setShowModalClear(false)
   }
 
@@ -146,6 +151,18 @@ const HomeScreen = () => {
     }
   }, [docs, userProfile])
 
+  useEffect(() => {
+    const list = currencyOptions?.map((currency: any) => ({
+      label: currency,
+      value: currency,
+    }))
+    setCurrencyList(list)
+  }, [currencyOptions])
+
+  useEffect(() => {
+    updateCurrency(curChange)
+  }, [curChange])
+
   return (
     <View style={tw("bg-green2 min-h-[100%] px-4")}>
       <FocusedStatusBar
@@ -155,7 +172,7 @@ const HomeScreen = () => {
       />
 
       {loading ? (
-        <View>
+        <View style={tw("mt-16")}>
           <Text>Loading...</Text>
         </View>
       ) : (
@@ -169,7 +186,6 @@ const HomeScreen = () => {
           <TouchableOpacity style={tw("mt-8 mb-4")}>
             <Button
               onPress={() => {
-                // navigation.navigate("ModalAADrawUp")
                 setShowModalAA(true)
               }}
               text="AA Draw Up"
@@ -185,13 +201,26 @@ const HomeScreen = () => {
 
           {/* clear all users and currency*/}
           {allMembers?.length > 0 && (
-            <View style={tw("flex-row justify-between items-center")}>
-              <Text>currency</Text>
-              <Button
-                onPress={() => setShowModalClear(true)}
-                text="clear"
-                linkType={true}
-              />
+            <View style={tw("flex-row justify-between items-center h-12 my-4")}>
+              <View style={tw("w-[30%]")}>
+                <DropDownPicker
+                  style={tw("")}
+                  placeholder="Currency"
+                  open={open}
+                  value={curChange}
+                  items={currencyList}
+                  setOpen={setOpen}
+                  setValue={setCurChange}
+                  setItems={setCurrencyList}
+                />
+              </View>
+              <View style={tw("")}>
+                <Button
+                  onPress={() => setShowModalClear(true)}
+                  text="clear"
+                  linkType={true}
+                />
+              </View>
             </View>
           )}
 

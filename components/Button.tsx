@@ -4,6 +4,7 @@ import { Button as Btn } from "@rneui/themed"
 import { useTailwind } from "tailwind-rn/dist"
 
 interface IButtonProps {
+  size?: "sm"
   text: string
   outline?: boolean
   linkType?: boolean
@@ -11,6 +12,7 @@ interface IButtonProps {
 }
 
 const Button: React.FC<IButtonProps> = ({
+  size,
   text,
   outline,
   onPress,
@@ -25,7 +27,11 @@ const Button: React.FC<IButtonProps> = ({
           title={text}
           type="clear"
           titleStyle={[
-            tw("text-green1 text-sm font-semibold"),
+            tw(
+              `text-green1 ${
+                text === "clear" ? "text-md" : "text-sm"
+              } font-semibold`
+            ),
             text === "clear" && { color: "#000" },
           ]}
           onPress={onPress}
@@ -41,8 +47,16 @@ const Button: React.FC<IButtonProps> = ({
         radius="md"
         titleStyle={
           outline
-            ? tw("text-green1 text-xl font-semibold")
-            : tw("text-[#fff] text-xl font-semibold")
+            ? tw(
+                `text-green1 ${
+                  size === "sm" ? "text-md" : "text-xl"
+                } font-semibold`
+              )
+            : tw(
+                `text-[#fff] ${
+                  size === "sm" ? "text-md" : "text-xl"
+                } font-semibold`
+              )
         }
         buttonStyle={
           outline
