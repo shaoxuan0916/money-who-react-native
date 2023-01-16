@@ -1,21 +1,9 @@
-.fixed {
-  position: fixed
-}
-
-.absolute {
-  position: absolute
-}
-
-.relative {
-  position: relative
+.top-0 {
+  top: 0px
 }
 
 .bottom-0 {
   bottom: 0px
-}
-
-.top-0 {
-  top: 0px
 }
 
 .left-0 {
@@ -59,12 +47,12 @@
   margin-left: 1rem
 }
 
-.mb-4 {
-  margin-bottom: 1rem
-}
-
 .mt-16 {
   margin-top: 4rem
+}
+
+.mb-4 {
+  margin-bottom: 1rem
 }
 
 .mb-8 {
@@ -75,16 +63,16 @@
   margin-top: 1rem
 }
 
+.mt-12 {
+  margin-top: 3rem
+}
+
 .mr-2 {
   margin-right: 0.5rem
 }
 
 .ml-2 {
   margin-left: 0.5rem
-}
-
-.mt-12 {
-  margin-top: 3rem
 }
 
 .flex {
@@ -103,20 +91,8 @@
   height: 5rem
 }
 
-.h-full {
-  height: 100%
-}
-
 .h-\[80\%\] {
   height: 80%
-}
-
-.h-\[90\%\] {
-  height: 90%
-}
-
-.h-\[85\%\] {
-  height: 85%
 }
 
 .max-h-\[400px\] {
